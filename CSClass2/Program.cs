@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Emit;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,6 +15,52 @@ namespace CSClass2
         {
             rx = x + vx;
             ry = y + vy;
+        }
+        class PointClass
+        {
+            public int x;
+            public int y;
+            public PointClass(int x, int y)
+            {
+                this.x = x;
+                this.y = y;
+            }
+        }
+        struct PointStruct
+        {
+            public int x;
+            public int y;
+
+            public PointStruct(int x, int y)
+            {
+                this.x = x;
+                this.y = y;
+            }
+
+        }
+
+        struct Point
+        {
+            public int x;
+            public int y;
+            public string testA;
+            public string testB;
+
+            public Point(int x, int y)
+            {
+                this.x = x;
+                this.y = y;
+                this.testA = "초기화";
+                this.testB = "초기화";
+            }
+
+            public Point(int x, int y, string s)
+            {
+                this.x = x;
+                this.y = y;
+                this.testA = s;
+                this.testB = s;
+            }
         }
 
         static void Main(string[] args)
@@ -69,51 +116,19 @@ namespace CSClass2
             psB.x = 100; psB.y = 200;
             Console.WriteLine(psA.x + " / " + psA.y);
             Console.WriteLine(psB.x + " / " + psB.y);
-        }
 
-        class PointClass
-        {
-            public int x;
-            public int y;
-            public PointClass(int x, int y) {
-                this.x = x;
-                this.y = y;
-            }
-        }
-
-        struct PointStruct
-        {
-            public int x;
-            public int y;
-
-            public PointStruct(int x, int y) {
-                this.x = x;
-                this.y = y;
-            }   
-
-        }
-
-        struct Point
-        {
-            public int x;
-            public int y;
-            public string testA;
-            public string testB;
-
-            public Point(int x, int y)
+            List<Product> list = new List<Product>()
             {
-                this.x = x;
-                this.y = y;
-                this.testA = "초기화";
-                this.testB = "초기화";
-            }
+                new Product(){Name="고구마", Price=1500},
+                new Product(){Name="사과", Price=2400},
+                new Product(){Name="바나나", Price=1000},
+                new Product(){Name="배", Price=3000},
+            };
+            list.Sort();
 
-            public Point(int x, int y, string s)
+            foreach(var item in list)
             {
-                this.x = x;
-                this.y = y;
-                this.testA = s;
-                this.testB = s;
+                Console.WriteLine(item);
             }
         }
     }
