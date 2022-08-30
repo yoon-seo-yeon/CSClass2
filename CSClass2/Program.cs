@@ -132,7 +132,13 @@ namespace CSClass2
                 {
                     Console.WriteLine(item);
                 }
-            }  
+            }
+
+            IBasic test = new TestClass();
+            test.TestProperty = 3;
+            test.TestInstanceMethod();
+            //test.foobar(); //<-인터페이스에서는 객체로 활동하지 못한다
+            (test as TestClass).foobar(); //<-이렇게는 됨
         }
 
         class Dummy : IDisposable
@@ -140,6 +146,24 @@ namespace CSClass2
             public void Dispose()
             {
                 Console.WriteLine("Dispose() 메서드를 호출했습니다.");
+            }
+        }
+
+        class TestClass : IBasic
+        {
+            public int foobar()
+            {
+                return -1;
+            }
+            public int TestProperty 
+            { 
+                get => throw new NotImplementedException(); 
+                set => throw new NotImplementedException(); 
+            }
+
+            public int TestInstanceMethod()
+            {
+                throw new NotImplementedException();
             }
         }
     }
