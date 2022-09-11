@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Runtime.InteropServices;
@@ -144,6 +145,32 @@ namespace CSClass2
             Parent childAsParent = c;
             IDisposable childAsDispoable = c;
             IComparable<Child> childAsComparable = c;
+
+            File.WriteAllText(@"c:\TEMP\test.txt", "문자열 메시지를 씁니다");
+            Console.WriteLine(File.ReadAllText(@"c:\TEMP\test.txt"));
+
+            using (StreamWriter writer = new StreamWriter(@"c:\TEMP\test.txt"))
+            {
+                writer.WriteLine("안녕하세요");
+                writer.WriteLine("StreamWriter 클래스를 사용해");
+                writer.Write("글자를");
+                writer.Write("여러줄");
+                writer.Write("입력해봅니다.");
+
+                for(int i = 0; i < 100; i++)
+                {
+                    writer.WriteLine("반복문 - " + i);
+                }
+            }
+
+            using (StreamReader reader = new StreamReader(@"c:\temp\test.txt"))
+            {
+                string line;
+                while((line = reader.ReadLine()) != null)
+                {
+                    Console.WriteLine(line);
+                }
+            }
         }
 
         class Dummy : IDisposable
