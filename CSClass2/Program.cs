@@ -139,6 +139,11 @@ namespace CSClass2
             test.TestInstanceMethod();
             //test.foobar(); //<-인터페이스에서는 객체로 활동하지 못한다
             (test as TestClass).foobar(); //<-이렇게는 됨
+
+            Child c = new Child();
+            Parent childAsParent = c;
+            IDisposable childAsDispoable = c;
+            IComparable<Child> childAsComparable = c;
         }
 
         class Dummy : IDisposable

@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Child.cs" />
     <Compile Include="IBasic.cs" />
+    <Compile Include="Parent.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Products.cs" />
     <Compile Include="Program.cs" />
